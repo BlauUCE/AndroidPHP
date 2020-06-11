@@ -28,10 +28,14 @@ public class ManejoAPI {
     public TextView getTextView() {
         return textView;
     }
-
     public void setTextView(TextView textView) {
         this.textView = textView;
     }
+
+
+    //get all
+
+    //get 1 by id
 
     public String getAll() {
         String url = "https://lucho27.000webhostapp.com/data/index.php";

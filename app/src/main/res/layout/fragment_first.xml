@@ -7,8 +7,9 @@
     tools:context=".FirstFragment">
 
     <LinearLayout
+        android:id="@+id/lytLogin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="..." />
+            android:text="admin" />
 
         <TextView
             android:id="@+id/textView2"
@@ -53,7 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:text="admin" />
 
         <ImageButton
             android:id="@+id/btnGo"
@@ -61,8 +63,26 @@
             android:layout_height="wrap_content"
             android:background="@android:drawable/gallery_thumb"
             android:backgroundTint="@color/colorPrimaryDark"
+            android:onClick="clickGo"
             android:src="@android:drawable/checkbox_on_background" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lytCouples"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtCouples"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

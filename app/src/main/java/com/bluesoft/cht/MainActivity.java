@@ -1,7 +1,10 @@
 package com.bluesoft.cht;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.bluesoft.cht.manejoapiback.ActivityChat;
+import com.bluesoft.cht.manejoapiback.ManejoAPIUsers;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -11,6 +14,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,10 +34,18 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
     }
 
     public void clickGo(View view) {
-
+        ManejoAPIUsers manejoAPIUsers = new ManejoAPIUsers(this);
+        //manejoAPIUsers.verificarUsuario("admin", "admin");
+        TextView txtUser = (TextView)findViewById(R.id.txtUser);
+        TextView txtPass = (TextView)findViewById(R.id.txtPass);
+        manejoAPIUsers.login(txtUser.getText().toString(), txtPass.getText().toString(), this);
+        //Intent intent = new Intent(this, ActivityChat.class);
+        //startActivityForResult(intent, 0);
     }
 
     @Override
