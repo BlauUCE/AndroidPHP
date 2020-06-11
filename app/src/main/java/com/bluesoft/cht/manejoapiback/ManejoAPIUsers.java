@@ -123,7 +123,7 @@ public class ManejoAPIUsers {
 
                                 if(user.isEmpty() || pass.isEmpty()) {
                                     Toast.makeText(context, "Ingrese datos válidos!", Toast.LENGTH_LONG).show();
-                                    return;;
+                                    return;
                                 }
 
                                 DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
