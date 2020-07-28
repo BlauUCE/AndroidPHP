@@ -28,14 +28,14 @@ public class ManejoAPICouple {
         manejoURL = new ManejoURL(activity);
     }
 
-    public void crearCouple(int user1, int user2, String username) {
+    public void crearCouple(int user1, String username1, int user2) {
         String url = manejoURL.url_crearCouple();
         JSONObject object = new JSONObject();
         try {
             try {
                 object.put("user_id1", user1);
+                object.put("name1", username1);
                 object.put("user_id2", user2);
-                object.put("name1", username);
                 object.put("name2", "admin");
             } catch (JSONException e) {
                 e.printStackTrace();

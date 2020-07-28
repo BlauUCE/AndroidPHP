@@ -44,7 +44,7 @@ public class ManejoAPIChat {
     private LinearLayout lytChat;
     private LinearLayout lytCouples;
     private Activity activity;
-    private String prefijo = "-";
+    private String prefijo = "";
 
     ManejoEncriptacion  manejoEncriptacion;
 
@@ -62,8 +62,15 @@ public class ManejoAPIChat {
         this.activity = activity;
         Random r = new Random();
         int tope = r.nextInt(18)+1;
+        char[] simbolos = new char[5];
+        simbolos[0] = '-';
+        simbolos[1] = '*';
+        simbolos[2] = '+';
+        simbolos[3] = '~';
+        simbolos[4] = '=';
+        int ind = r.nextInt(5);
         for(int i=0; i<tope; i++) {
-            prefijo += "-";
+            prefijo += simbolos[ind];
         }
         prefijo += ">";
         manejoEncriptacion = new ManejoEncriptacion();

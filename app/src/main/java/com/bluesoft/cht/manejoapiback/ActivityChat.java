@@ -141,8 +141,9 @@ public class ActivityChat extends AppCompatActivity {
         if(!chat.isEmpty()) {
             manejoAPIChat.enviarTxt(view, chat); //esta funcion encripta y manda
             txtSend.setText("");
+            //pausa para permirtir que se grabe el mensaje enviado
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

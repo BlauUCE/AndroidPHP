@@ -183,7 +183,8 @@ public class ManejoAPIUsers {
                                                                     }
                                                                     try {
                                                                         //System.out.println(" id nuevo "+ jsonRespuesta.getInt("id"));
-                                                                        manejoAPICouple.crearCouple(jsonRespuesta.getInt("id"), 1, user);
+                                                                        //crear pareja usuario nuevo con administrador
+                                                                        manejoAPICouple.crearCouple(jsonRespuesta.getInt("id"), user, 1);
                                                                     } catch (JSONException e) {
                                                                         //System.out.println("manejoapiusers--- 181 -----------------------");
                                                                         e.printStackTrace();
