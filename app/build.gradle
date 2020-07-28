@@ -36,4 +36,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.android.volley:volley:1.1.0'
+    implementation files('C:\\Users\\desarrollo\\Documents\\CHT2\\commons-codec-1.14.jar')
+    releaseImplementation files('C:\\Users\\desarrollo\\Documents\\CHT2\\commons-codec-1.14.jar')
 }

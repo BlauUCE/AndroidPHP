@@ -4,67 +4,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo2"
+    android:backgroundTintMode="src_atop"
     tools:context=".FirstFragment">
 
     <LinearLayout
         android:id="@+id/lytLogin"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="200dp"
+        android:background="#55ffffff"
         android:orientation="vertical"
+        android:padding="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintVertical_bias="0.19">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_green_dark"
+                android:onClick="setEndPoint"
+                android:src="@android:drawable/ic_menu_manage" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textview_first"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="INICIO"
-            android:textColor="#320D0D"
+            android:text="C.H.T"
+            android:textColor="@android:color/holo_orange_dark"
             android:textSize="36sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Usuario"
-            android:textColor="#3F51B5"
+            android:textColor="#ff000000"
             android:textSize="30sp" />
 
         <EditText
             android:id="@+id/txtUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#22000022"
+            android:elevation="10px"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="admin" />
+            android:maxLength="10"
+            android:shadowDx="20"
+            android:shadowDy="20"
+            android:textColor="#ff000000" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Clave"
-            android:textColor="#3F51B5"
+            android:textColor="#ff000000"
             android:textSize="30sp" />
 
         <EditText
             android:id="@+id/txtPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#22000022"
+            android:elevation="10px"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="admin" />
+            android:maxLength="10"
+            android:shadowDx="20"
+            android:shadowDy="20"
+            android:textColor="#ff000000" />
 
-        <ImageButton
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
             android:id="@+id/btnGo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:drawable/gallery_thumb"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:background="@drawable/boton_redondo2"
+            android:gravity="center"
             android:onClick="clickGo"
-            android:src="@android:drawable/checkbox_on_background" />
+            android:text="INGRESAR / CREAR"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

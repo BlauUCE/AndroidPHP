@@ -1,6 +1,6 @@
 <?php
 /////////////////////////////////////
-// CONTROLADOR USER
+// CONTROLADOR COUPLE
 /////////////////////////////////////
 include "config.php";
 include "utils.php";
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
         $sql->bindValue(':user_id1', $_GET['user_id1']);
       } 
       if (isset($_GET['user_id2']) && !isset($_GET['user_id1'])) {
-        $sql = $dbConn->prepare("SELECT * FROM couple where user_id1=:user_id2 or user_id2=:user_id2");
+        $sql = $dbConn->prepare("SELECT * FROM couple where user_id1=:user_id2  or user_id2=:user_id2");
         $sql->bindValue(':user_id2', $_GET['user_id2']);
       }
 
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             del($_GET['user_id1'], $_GET['user_id2']);
     }
     else {
-        $sql = "INSERT INTO couple (user_id1, user_id2) VALUES (:user_id1, :user_id2)";
+        $sql = "INSERT INTO couple (user_id1, user_id2, name1, name2) VALUES (:user_id1, :user_id2, :name1, :name2)";
         $statement = $dbConn->prepare($sql);
         $statement = bindAllValues($statement, $vals);
         $statement->execute();

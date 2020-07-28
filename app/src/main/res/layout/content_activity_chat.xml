@@ -5,6 +5,7 @@
     android:id="@+id/lytChat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/stret"
     android:gravity="bottom"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -22,15 +23,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:background="@android:color/holo_green_dark"
+            android:background="#05ffffff"
             android:gravity="bottom"
             android:scrollbars="vertical"
             android:text="chat..."
+            android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100px"
+            android:layout_height="80px"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
@@ -40,17 +42,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:background="@drawable/txt_fondo"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="@android:color/white" />
 
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="?android:attr/colorPressedHighlight"
+                android:background="@drawable/boton_redondo2"
                 android:onClick="enviarChat"
-                app:srcCompat="@android:drawable/ic_menu_send" />
+                app:srcCompat="@android:drawable/sym_action_email" />
         </LinearLayout>
 
     </LinearLayout>
@@ -60,6 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="5"
+        android:background="#55ffffff"
         android:orientation="vertical"
         tools:visibility="gone">
 

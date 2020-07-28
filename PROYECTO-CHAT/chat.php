@@ -13,11 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
     if (isset($_GET['id']))
     {
       //Enviar un chat
-      $sql = $dbConn->prepare("SELECT * FROM chat where id=:id");
-      $sql->bindValue(':id', $_GET['id']);
+      $sql = $dbConn->prepare("SELECT * FROM chat where id=:id1");
+      $sql->bindValue(':id1', $_GET['id']);
+      //$sql->bindValue(':id2', $vals['user_id2']);
       $sql->execute();
       header("HTTP/1.1 200 OK");
-      echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
+      //echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
+      $sql->setFetchMode(PDO::FETCH_ASSOC);
+      echo json_encode( $sql->fetchAll() );
       exit();
     }
     else {
@@ -38,6 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     //obtener body del POST
     $entityBody = file_get_contents('php://input');
     $vals =  json_decode($entityBody, true);
+
+    //var_dump($vals);
 
     /*switch(json_last_error()) {
       case JSON_ERROR_NONE:
@@ -66,15 +71,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     //verificar put/delete
     if (isset($_GET['id']))
     {
-        if(isset($vals['put']))
+        if(isset($vals[0]['put']))
             put();
-        if(isset($vals['del']))
+        if(isset($vals[0]['del']))
             del($_GET['id']);
+        if(isset($vals[0]['ch']))
+            getChat();
     }
     else {  
-        $sql = "INSERT INTO chat (user_id, content, type) VALUES (:user_id, :content, :type)";
+        $sql = "INSERT INTO chat (user_id1, user_id2, content, type) VALUES (:user_id1, :user_id2, :content, :type)";
         $statement = $dbConn->prepare($sql);
-        $statement = bindAllValues($statement, $vals);
+        $statement = bindAllValues($statement, $vals[0]);
         try {
           $statement->execute();     
         } catch(Exception $e) {
@@ -86,10 +93,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             $input['id'] = $postId;
             header("HTTP/1.1 200 OK");
-            echo json_encode($input);
             exit();
         }
     }
+}
+
+//get chat de 2 usuarios
+function getChat() {
+  global $dbConn;
+  //obtener body 
+  $entityBody = file_get_contents('php://input');
+  $vals =  json_decode($entityBody, true);
+
+  //var_dump($vals);
+
+  //Enviar los chats de 2 ususarios
+  $sql = $dbConn->prepare("SELECT * FROM chat where user_id1=:id1 and user_id2=:id2 or user_id1=:id2 and user_id2=:id1");
+  $sql->bindValue(':id1', $vals[0]['user_id1']);
+  $sql->bindValue(':id2', $vals[0]['user_id2']);
+  $sql->execute();
+  header("HTTP/1.1 200 OK");
+  //echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
+  $sql->setFetchMode(PDO::FETCH_ASSOC);
+  echo json_encode( $sql->fetchAll() );
+  exit();
 }
 
 
@@ -109,7 +136,7 @@ function put()
 
   $sql = "
     UPDATE chat
-    SET user_id=:user_id, content=:content, type=:type
+    SET user_id1=:user_id1, user_id2=:user_id2, content=:content, type=:type
     WHERE id='$postId'";
 
     try {
